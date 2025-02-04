@@ -49,11 +49,19 @@ struct ContentView: View {
                 Text("Error: \(errorMessage)").foregroundColor(.red)
             } else {
                 List(recipes, id: \.uuid) { recipe in
-                    VStack(alignment: .leading) {
-                        Text(recipe.name)
-                            .font(.headline)
-                        Text(recipe.cuisine)
-                            .font(.subheadline)
+                    HStack {
+                        // Left side (cuisine and name)
+                        VStack(alignment: .leading) {
+                            Text(recipe.name)
+                                .font(.headline)
+                            Text(recipe.cuisine)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.leading)
+                        
+                        Spacer()
+                        
                         AsyncImage(url: recipe.photoUrlSmall) { phase in
                             switch phase {
                             case .empty:
@@ -64,6 +72,7 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
                             case .failure(_):
                                 Image(systemName: "exclamationmark.triangle.fill")  // Show an error icon
                                     .resizable()
