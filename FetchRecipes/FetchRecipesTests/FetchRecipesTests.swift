@@ -96,7 +96,7 @@ struct FetchRecipesTests {
             #expect(recipeResponse.recipes.count > 0, "Recipes are not parsing correctly or server is down.")
             
         } catch let error {
-//            print(error.localizedDescription)
+            print(error.localizedDescription)
             #expect(true, "Cannot decode recipes properly.")
         }
     }
