@@ -7,35 +7,6 @@
 
 import SwiftUI
 
-// Model for a Recipe
-struct Recipe: Codable, Identifiable {
-    var id = UUID()
-    
-    let cuisine: String
-    let name: String
-    let photoUrlLarge: URL?
-    let photoUrlSmall: URL?
-    let sourceUrl: URL?
-    let uuid: String
-    let youtubeUrl: URL?
-    
-    // We map the keys in JSON to our property names using CodingKeys
-    enum CodingKeys: String, CodingKey {
-        case cuisine
-        case name
-        case photoUrlLarge = "photo_url_large"
-        case photoUrlSmall = "photo_url_small"
-        case sourceUrl = "source_url"
-        case uuid
-        case youtubeUrl = "youtube_url"
-    }
-}
-
-// Root model containing the recipes array
-struct RecipeResponse: Codable {
-    let recipes: [Recipe]
-}
-
 struct ContentView: View {
     @State private var recipes: [Recipe] = []
     @State private var isLoading = true
@@ -62,26 +33,6 @@ struct ContentView: View {
                         
                         Spacer()
                         
-//                        AsyncImage(url: recipe.photoUrlSmall) { phase in
-//                            switch phase {
-//                            case .empty:
-//                                ProgressView()
-//                                    .frame(width: 100, height: 100)
-//                            case .success(let image):
-//                                image
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(width: 100, height: 100)
-//                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-//                            case .failure(_):
-//                                Image(systemName: "exclamationmark.triangle.fill")  // Show an error icon
-//                                    .resizable()
-//                                    .frame(width: 100, height: 100)
-//                                    .foregroundColor(.red)
-//                            @unknown default:
-//                                EmptyView()
-//                            }
-//                        }
                         RecipeImageView(photoUrlSmall: recipe.photoUrlSmall, imageId: recipe.uuid)
                     }
                 }
