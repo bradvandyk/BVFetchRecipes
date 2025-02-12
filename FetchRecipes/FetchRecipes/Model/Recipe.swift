@@ -8,11 +8,11 @@
 import SwiftUI
 
 // Model for a Recipe
-public struct Recipe: Codable, Identifiable {
+struct Recipe: Codable, Identifiable {
     public var id = UUID()
     
     let cuisine: String
-    public let name: String
+    let name: String
     let photoUrlLarge: URL?
     let photoUrlSmall: URL?
     let sourceUrl: URL?
@@ -32,6 +32,6 @@ public struct Recipe: Codable, Identifiable {
 }
 
 // Root model containing the recipes array
-public struct RecipeResponse: Codable {
-    public let recipes: [Recipe]
+struct RecipeResponse: Codable {
+    let recipes: [Recipe]
 }

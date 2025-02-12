@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FetchRecipes
+@testable import FetchRecipes
 import Testing
 
 struct FetchRecipesTests {

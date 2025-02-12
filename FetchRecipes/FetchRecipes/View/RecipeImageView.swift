@@ -10,8 +10,8 @@ import SwiftUI
 struct RecipeImageView: View {
     let photoUrlSmall: URL?
     let imageId: String?
-    
-    var body: some View {
+
+    public var body: some View {
         AsyncImage(url: photoUrlSmall) { phase in
             switch phase {
             case .empty:
